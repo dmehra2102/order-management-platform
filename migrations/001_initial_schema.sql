@@ -2,7 +2,7 @@
 CREATE TABLE IF NOT EXISTS orders (
     id UUID PRIMARY KEY,
     user_id VARCHAR(255) NOT NULL,
-    resturant_id VARCHAR(255) NOT NULL,
+    restaurant_id VARCHAR(255) NOT NULL,
     total_amount DECIMAL(10,2) NOT NULL,
     status VARCHAR(50) NOT NULL DEFAULT 'PENDING',
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
