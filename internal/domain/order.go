@@ -25,18 +25,18 @@ type OrderItem struct {
 }
 
 type Order struct {
-	ID          string      `json:"id"`
-	UserID      string      `json:"user_id"`
-	ResturantID string      `json:"resturant_id"`
-	Items       []OrderItem `json:"items"`
-	TotalAmount float64     `json:"total_amount"`
-	Status      OrderStatus `json:"status"`
-	CreatedAt   time.Time   `json:"created_at"`
-	UpdatedAt   time.Time   `json:"updated_at"`
-	Version     int         `json:"version"`
+	ID           string      `json:"id"`
+	UserID       string      `json:"user_id"`
+	RestaurantID string      `json:"restaurant_id"`
+	Items        []OrderItem `json:"items"`
+	TotalAmount  float64     `json:"total_amount"`
+	Status       OrderStatus `json:"status"`
+	CreatedAt    time.Time   `json:"created_at"`
+	UpdatedAt    time.Time   `json:"updated_at"`
+	Version      int         `json:"version"`
 }
 
-func NewOrder(userID, resturantID string, items []OrderItem) (*Order, error) {
+func NewOrder(userID, restaurantID string, items []OrderItem) (*Order, error) {
 	var total float64
 	for _, item := range items {
 		total += item.Price * float64(item.Quantity)
@@ -44,15 +44,15 @@ func NewOrder(userID, resturantID string, items []OrderItem) (*Order, error) {
 
 	now := time.Now().UTC()
 	return &Order{
-		ID:          uuid.New().String(),
-		UserID:      userID,
-		ResturantID: resturantID,
-		Items:       items,
-		TotalAmount: total,
-		Status:      OrderStatusPending,
-		CreatedAt:   now,
-		UpdatedAt:   now,
-		Version:     1,
+		ID:           uuid.New().String(),
+		UserID:       userID,
+		RestaurantID: restaurantID,
+		Items:        items,
+		TotalAmount:  total,
+		Status:       OrderStatusPending,
+		CreatedAt:    now,
+		UpdatedAt:    now,
+		Version:      1,
 	}, nil
 }
 

@@ -61,7 +61,7 @@ func NewOrderCreatedEvent(order *Order) OrderCreatedEvent {
 		EventID:      uuid.New().String(),
 		OrderID:      order.ID,
 		UserID:       order.UserID,
-		RestaurantID: order.ResturantID,
+		RestaurantID: order.RestaurantID,
 		Items:        order.Items,
 		TotalAmount:  order.TotalAmount,
 		CreatedAt:    order.CreatedAt,
