@@ -182,6 +182,7 @@ func (s *Server) createOrder(w http.ResponseWriter, r *http.Request) {
 
 	order, err := s.service.CreateOrder(r.Context(), req.UserID, req.RestaurantID, items)
 	if err != nil {
+		s.metrics.OrdersFailed.Inc()
 		s.respondError(w, http.StatusBadRequest, "Failed to create order", err.Error())
 		return
 	}
